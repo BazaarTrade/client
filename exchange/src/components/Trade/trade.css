@@ -1,0 +1,38 @@
+.trade {    
+    background-color: rgb(18, 18, 18);
+    h2 {
+        background-color: inherit;
+        padding: 10px 16px;     
+        border-bottom: solid 1px gray;  
+        font-size: 16px;
+    }
+
+    .namings{
+        display: flex;
+        background-color: inherit;
+        padding: 9px 0px;
+        font-size: small;
+        
+        .time-column{
+            flex: 1;
+            background-color: inherit;
+        }
+
+        .fill-price-column{
+            flex: 1;  
+            background-color: inherit;
+            text-align: right;
+        }
+
+        .total-column{
+            flex: 1;
+            background-color: inherit;
+            text-align: right;
+        }
+    }
+    .list{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}   

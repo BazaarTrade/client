@@ -1,0 +1,23 @@
+.price {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    align-items: center;
+    padding: 10px 0;
+    background-color: var(--primary-bg-color);
+    .symbol-price, .fiat-price {
+        display: flex;
+    }
+
+    .symbol-price {
+        font-size: 24px;
+        color: var(--green);
+        font-weight:600;
+        background-color: var(--primary-bg-color);
+    }
+
+    .fiat-price {
+        font-size: small;
+        background-color: var(--primary-bg-color);
+    }
+}

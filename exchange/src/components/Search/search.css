@@ -1,0 +1,21 @@
+.search{
+    display: flex;
+    padding: 0px;
+    gap: 20px;
+    
+    .searchBar{
+        background-color: rgb(27, 27, 27);
+        border-radius: 10px;
+        display:flex;
+        padding: 1rem;
+        flex:1;
+        
+    }
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color:aliceblue;
+        flex: 1;
+    }        
+}

@@ -1,0 +1,14 @@
+.bg-white {
+    background-color: white;
+}
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.has-no-bg{
+    background-color: transparent;
+}

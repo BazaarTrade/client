@@ -1,0 +1,53 @@
+.trendbar {
+    display:flex;
+    position: relative;
+    width: 100%;
+    background-color: inherit;
+    .redbar {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        background-color: #2b171b;
+        height: 7px;
+        width: 100%;
+        z-index: 1;
+
+    }
+    .greenbar {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        background-color: #002703;
+        height: 7px;
+        width: 70%;
+        z-index: 2;
+    }
+
+    .percentage {
+        position: absolute;
+        display: flex;
+        justify-content: space-between; 
+        width: 100%; 
+        top: 7px; /* Position it right below the bars */
+        left: 0;
+        background-color: inherit;
+        font-size: small;
+    
+        .buy {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            color: var(--green);
+        }
+        
+        .sell {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            color: var(--red);
+        }
+    }
+}

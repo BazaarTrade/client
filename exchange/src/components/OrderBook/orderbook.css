@@ -1,0 +1,40 @@
+.orderbook {
+    background-color: rgb(18, 18, 18);
+    h2 {
+        background-color: inherit;
+        padding: 10px 16px;       
+        border-bottom: solid 1px gray;
+        font-size: 16px;
+    }
+
+    .button-dropdown-box {
+        display: flex;
+        
+        background-color: inherit;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0px;
+
+        .button-box {
+            display: flex;
+            gap: 23px;
+            background-color: inherit;
+            align-items: center;
+            height: 20px;
+
+            .chart-button {
+                width: 20px;
+                height: 20px;
+                background-size: cover;
+                opacity: 60%;
+            }
+            .chart-button:hover {
+                opacity: 100%;
+            }
+        }
+    }
+    .order-list {
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+}   
