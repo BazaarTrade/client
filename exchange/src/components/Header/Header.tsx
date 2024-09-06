@@ -1,12 +1,13 @@
-import React from 'react'
+import { useThemeContext } from "../../state/themeContext";
 import "./header.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
 const Header = () => {
+    const {isDark, setIsDark} = useThemeContext();
   return (
-    <div className='header'>
+    <header className='header'>
         <div className="logo-tabs">
             <div className='logo'>
                 <h1>FRECZ</h1>
@@ -21,9 +22,9 @@ const Header = () => {
             <button className='primary-btn has-no-bg'>Log In</button>
             <button className='primary-btn bg-white black'>Sign Up</button>
             <button className='btn'><FontAwesomeIcon icon={faGlobe} size='xl' /></button>
-            <button className='btn'><FontAwesomeIcon icon={faSun} size='xl'/></button>
+            <button className='btn' onClick={() => setIsDark(!isDark)}><FontAwesomeIcon icon={isDark ? faSun : faMoon} size='xl'/></button>
         </div>
-    </div>
+    </header>
   )
 }
 

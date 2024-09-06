@@ -6,14 +6,19 @@
     background-color: #0F0F0F;
     display: flex;
     justify-content: space-between;
-    h1 {
-        background-color: inherit;
-    }
-
+    
     .logo-tabs {
         display: flex;
         gap: 40px;
         background-color: transparent;
+        background-color: inherit;
+
+        .logo {
+            background-color: inherit;
+            h1 {
+                background-color: inherit;
+            }
+        }
     }
 }
 
@@ -31,14 +36,15 @@
 
 .button-box {
     display: flex;
-    background-color: transparent;
-    gap: 16px;
+    background-color: inherit;
+    gap: 25px;
 }
 
 .btn {
     border: none;
     outline: none;
     background-color: transparent;
+    width: 20px;
 }
 
 .primary-btn {

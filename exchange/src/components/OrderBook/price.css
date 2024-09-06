@@ -4,7 +4,7 @@
     gap: 7px;
     align-items: center;
     padding: 10px 0;
-    background-color: var(--primary-bg-color);
+    background-color: var(--secondary-background-color);
     .symbol-price, .fiat-price {
         display: flex;
     }
@@ -13,11 +13,11 @@
         font-size: 24px;
         color: var(--green);
         font-weight:600;
-        background-color: var(--primary-bg-color);
+        background-color: transparent
     }
 
     .fiat-price {
         font-size: small;
-        background-color: var(--primary-bg-color);
+        background-color: transparent;
     }
 }

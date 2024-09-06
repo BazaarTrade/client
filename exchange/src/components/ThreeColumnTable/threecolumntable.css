@@ -11,12 +11,16 @@ th.first-column, th.second-column, th.third-column {
     z-index: 2;
 }
 
+.table-headings > th {
+    color: var(--secondary-text-color);
+}
+
 .has-no-thead thead {
     display: none;
 }
 
 tr{
-    background-color: rgb(18, 18, 18);
+    background-color: var(--secondary-background-color);
 }
 
 td {
@@ -30,15 +34,14 @@ tr::before {
     top: 0;
     right: 0;
     height: 100%;
-    /* background-color: rgba(19, 109, 73, 0.274);  */
     background-color: var(--volume-bar-color);
     width: var(--volume-bar-width, 0%);
-    transition: width 0.3s ease-out; 
     z-index: 1;
+    transition: width 0.3s ease-out, background-color 0.2s ease-in-out;
 }
 
 tr.traderow {
-    background-color: rgb(18, 18, 18);
+    background-color: var(--secondary-background-color);
     font-size: 12px;
 }
 tr.orderrow {
@@ -57,7 +60,7 @@ tr.orderrow {
     height: 20px;
     position: relative;
     z-index: 2;
-    color: #BFBFBF;
+    color: var(--third-text-color);
     font-weight: 500;
 }
 
@@ -68,19 +71,10 @@ td.green {
     color: #30BF87;
 }
 
-.bg-red {
-    background-color: #2b171b;
-}
-
-.bg-green {
-    background-color: #002703;
-}
-
 .volume-bar {
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
-    background-color: red;
     z-index: 1;
 }

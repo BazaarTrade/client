@@ -1,6 +1,7 @@
 .orderbook-trade{
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color);
     .symbol {
         display: flex;
         justify-content: space-between;
@@ -11,6 +12,7 @@
         h1 {
             font-size: 42px;
             font-weight: 700;
+            color: var(--primary-text-color);
         }
     }
     .main-section{
@@ -21,7 +23,6 @@
         gap: 0.5rem;
         margin: 0 auto;
         height: fit-content;
-        
     }
 }
 
@@ -32,3 +33,7 @@
     display: flex; 
     flex-direction: column;
 }
+
+/* .orderbook-trade * {
+    transition: background-color 0.1s ease-in-out;
+} */

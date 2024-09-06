@@ -13,13 +13,13 @@ const ThreeColumnTable: React.FC<TableProps> = ({ children, symbol, tableType, c
     <table className={className}>
       <thead>
         {tableType === "trade" ? (
-          <tr>
+          <tr className="table-headings">
             <th className="first-column">Time</th>
             <th className="second-column">Fill Price ()</th>
             <th className="third-column">Total ()</th>
           </tr>
         ) : (
-          <tr>
+          <tr className="table-headings">
             <th className="first-column">Price ()</th>
             <th className="second-column">Qty ()</th>
             <th className="third-column">Total ()</th>

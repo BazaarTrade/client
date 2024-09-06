@@ -13,19 +13,15 @@ function getRandomNumber(min: number, max: number): number {
 }
 
 const OrderRow: React.FC<OrderRowProps> = ({ isBid, price, volume, total }) => {
-    const backgroundClass = isBid ? "rgba(19, 109, 73, 0.274)" : "rgba(255, 0, 0, 0.1)";
+    const backgroundClass = isBid ? "var(--bid-volume-color)" : "var(--ask-volume-color)";
     const [widthPercentage, setWidthPercentage] = useState<number>(0);
 
     useEffect(() => {
-        // Function to update the widthPercentage
         const updateWidthPercentage = () => {
             setWidthPercentage(getRandomNumber(10, 100));
         };
-
-        // Set an interval to update the widthPercentage every second
         const intervalId = setInterval(updateWidthPercentage, 500);
-
-        // Cleanup the interval on component unmount
+        
         return () => clearInterval(intervalId);
     }, []);
 
