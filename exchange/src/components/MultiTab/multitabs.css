@@ -1,0 +1,37 @@
+.tabs-container {
+    width: 100%;
+    position: relative;
+
+    .tabs {
+      display: flex;
+      position: relative;
+      gap: 30px;
+      font-size: 14px;
+    }
+    
+    .tab {
+
+      text-align: center;
+      padding: 10px 0;
+      cursor: pointer;
+      position: relative;
+      font-weight: normal;
+      color: #8c8c8c;
+    }
+    
+    .tab.active {
+      font-weight: bold;
+      color: var(--primary-text-color);
+    }
+    
+    .underline {
+      position: absolute;
+      bottom: -1px;
+      height: 2px;
+      background-color: var(--primary-text-color);
+      transition: left 0.1s ease, width 0.1s ease;
+    }
+  }
+  
+  
+  

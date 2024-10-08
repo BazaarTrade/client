@@ -9,7 +9,12 @@
 :root {
   --green: #30BF87;
   --red: #f2495e;
-  background-color: #161616;
+  background-color: var(--background-color);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .container {
