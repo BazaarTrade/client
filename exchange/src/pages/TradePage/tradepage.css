@@ -1,0 +1,56 @@
+.trade-page {
+    background-color: var(--background-color);
+    .trade-page-layout {
+        display: grid;
+        grid-template-columns: 3.6fr 1fr 1fr;
+        grid-template-rows: 64px 560px 50px 200px;
+        grid-gap: 5px;
+        grid-template-areas: 
+        'name name name'
+        'chart orderbook order-panel'
+        'order-tabs order-tabs assets'
+        'order-tabs order-tabs assets';
+        
+        .name{
+            grid-area: name;
+            border-top: 5px solid var(--background-color);
+        }
+
+        .chart{
+            grid-area: chart;
+        }
+
+        .orderbook{
+            grid-area: orderbook;
+        }
+
+        .order-panel{
+            grid-area: order-panel;
+        }
+
+        .order-tabs{
+            grid-area: order-tabs;
+            padding: 0px 12px;
+        }
+
+        .assets {
+            grid-area: assets;
+        }
+    }
+}
+
+.trade-page-layout > * {
+    background-color: var(--secondary-background-color);
+    border-radius: 17px;
+
+}
+
+.chart, .orderbook, .order-panel {
+    border-radius: 17px;
+}
+
+.item {
+
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+  }
