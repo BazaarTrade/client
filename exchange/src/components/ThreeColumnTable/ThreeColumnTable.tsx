@@ -1,34 +1,26 @@
 import { ReactNode } from "react";
 import "./threecolumntable.css";
+import React from "react";
 
 interface TableProps {
-  children: ReactNode;
+  children: ReactNode; // Accept React nodes as children
   symbol: "BTC_USDT";
-  tableType: "trade" | "order";
-  className?: string; // Add this line to accept additional class names
+  className?: string; // Accept additional class names
+  limit?: number; // Prop name to limit the number of children rendered
 }
 
-const ThreeColumnTable: React.FC<TableProps> = ({ children, symbol, tableType, className }) => {
+const ThreeColumnTable: React.FC<TableProps> = ({ children, symbol, className, limit }) => {
+  // If a limit is provided, slice the children
+  const displayedChildren = limit ? React.Children.toArray(children).slice(0, limit) : children;
+
   return (
     <table className={className}>
-      <thead>
-        {tableType === "trade" ? (
-          <tr className="table-headings">
-            <th className="first-column">Time</th>
-            <th className="second-column">Fill Price ()</th>
-            <th className="third-column">Total ()</th>
-          </tr>
-        ) : (
-          <tr className="table-headings">
-            <th className="first-column">Price ()</th>
-            <th className="second-column">Qty ()</th>
-            <th className="third-column">Total ()</th>
-          </tr>
-        )}
-      </thead>
-      {children}
+      <tbody>
+        {displayedChildren} {/* Directly render the children */}
+      </tbody>
     </table>
   );
 };
 
 export default ThreeColumnTable;
+

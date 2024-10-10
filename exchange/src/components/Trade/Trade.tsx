@@ -1,6 +1,7 @@
 import "./trade.css"
 import ThreeColumnTable from "../ThreeColumnTable/ThreeColumnTable"
 import TradeRow from "../ThreeColumnTable/TradeRow"
+import Thead from "../ThreeColumnTable/Thead"
 
 const Trade = () => {
   return (
@@ -8,7 +9,8 @@ const Trade = () => {
       <h2>Trade</h2>  
       <div className="container">
         <div className="list">
-          <ThreeColumnTable symbol={"BTC_USDT"} tableType={"trade"}>
+          <Thead tableType="trade"></Thead>
+          <ThreeColumnTable symbol={"BTC_USDT"}>
             <TradeRow isBid = {true} />
             <TradeRow isBid = {false} />
             <TradeRow isBid = {false} />

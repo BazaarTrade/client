@@ -12,3 +12,7 @@
 .has-no-bg{
     background-color: transparent;
 }
+
+.hidden {
+    display: none;
+}

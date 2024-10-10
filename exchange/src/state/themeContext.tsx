@@ -19,9 +19,9 @@ export const ThemeProvider = ({ children }: ThemeContextProviderProps) => {
 
     useEffect(() => {
         if (isDark) {
-            document.documentElement.setAttribute("data-theme", "dark");
+            document.documentElement.setAttribute("color-theme", "dark");
         } else {
-            document.documentElement.setAttribute("data-theme", "light");
+            document.documentElement.setAttribute("color-theme", "light");
         }
     }, [isDark]);
 

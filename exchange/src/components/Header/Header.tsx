@@ -10,7 +10,7 @@ const Header = () => {
     <header className='header'>
         <div className="logo-tabs">
             <div className='logo'>
-                <h1>FRECZ</h1>
+                <h1>BAZAAR</h1>
             </div>
             <div className="tabs">
                 <div className="tab">Spot</div>

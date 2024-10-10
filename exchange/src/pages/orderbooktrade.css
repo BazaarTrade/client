@@ -1,23 +1,26 @@
-.orderbook-trade{
+.orderbook-trade {
     display: flex;
     flex-direction: column;
     background-color: var(--background-color);
+
     .symbol {
         display: flex;
         justify-content: space-between;
         max-width: 1200px;
-        width: 1200px;
-        margin: 2.7rem auto;
+        width: 100%;
+        margin: 1.5rem auto 1rem auto;
         align-items: center;
+
         h1 {
             font-size: 42px;
             font-weight: 700;
             color: var(--primary-text-color);
         }
     }
-    .main-section{
+
+    .main-section {
         max-width: 1200px;
-        width: 1200px;
+        width: 100%; 
         display: flex;
         justify-content: space-between;
         gap: 0.5rem;
@@ -27,13 +30,15 @@
 }
 
 .book-trade-container {
-    max-width: 588px;
-    width: 588px;
-    height: 800px;  
+    max-width: 588px;  
+    width: 100%;       
+    height: auto;      
     display: flex; 
     flex-direction: column;
+    margin-bottom: 1rem;
+    padding-bottom: 4px;
+    border-radius: 17px;
+    flex-grow: 1;     
+    min-height: 0;    
 }
 
-/* .orderbook-trade * {
-    transition: background-color 0.1s ease-in-out;
-} */

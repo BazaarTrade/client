@@ -1,8 +1,8 @@
 .orderbook {
     background-color: var(--secondary-background-color);
     h2 {
-        padding: 10px 16px;       
-        border-bottom: solid 1px gray;
+        padding: 10px 16px; 
+        padding-bottom: 3px;      
         font-size: 16px;
         color: var(--primary-text-color);
     }
@@ -20,15 +20,78 @@
             background-color: transparent;
             align-items: center;
             height: 20px;
+            position: relative;
 
-            .chart-button {
+            .btn:hover {
+                opacity: 1;
+            }
+
+            .btn {
+                opacity: 0.4;
+            }
+
+            .order-buy-btn, .order-sell-btn, .order-all-btn {
+                position: relative;
                 width: 20px;
                 height: 20px;
-                background-size: cover;
-                opacity: 60%;
+                align-items: center;
+                display: flex;
+
+                .right-icon::before, .right-icon::after {
+                    content: '';
+                    width: 7px;
+                    position: absolute;
+                    left: -10px;
+                    border-radius: 1px;
+                }
             }
-            .chart-button:hover {
-                opacity: 100%;
+
+            .order-buy-btn, .order-sell-btn {
+                .right-icon::before {
+                    height: 16px;
+                }
+            }
+            
+            .order-all-btn {
+                .right-icon::before, .right-icon::after {
+                    height: 7px;
+                }
+
+                .right-icon::after {
+                    background-color: var(--red);
+                    top: 0; 
+                }
+
+                .right-icon::before {
+                    background-color: var(--green);
+                    bottom: 0;
+                }
+            }
+
+            .order-buy-btn {
+                .right-icon::before {
+                    background-color: var(--green);
+                }
+            }
+
+            .order-sell-btn {
+                .right-icon::before {
+                    background-color: var(--red);
+                }
+            }
+            
+            .right-icon {
+                display: block;
+                width: 7px;
+                height: 16px;
+                background-color: #6d6d6d;
+                position: absolute;
+                right: 0;
+                border-radius: 1px;
+            }
+
+            .active {
+                opacity: 1;
             }
         }
     }

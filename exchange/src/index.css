@@ -9,7 +9,6 @@
 :root {
   --green: #30BF87;
   --red: #f2495e;
-  background-color: var(--background-color);
 }
 
 body {

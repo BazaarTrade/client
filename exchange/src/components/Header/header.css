@@ -1,6 +1,6 @@
 .header {
-    max-height: 64;
-    height: 64;
+    max-height: 55px;
+    height: 55px;
     width: 100%;
     padding:10px 24px;
     background-color: #0F0F0F;
@@ -12,11 +12,14 @@
         gap: 40px;
         background-color: transparent;
         background-color: inherit;
+        align-items: center;
 
         .logo {
             background-color: inherit;
+            
             h1 {
                 background-color: inherit;
+                font-size: 30px;
             }
         }
     }
