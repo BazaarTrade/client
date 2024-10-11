@@ -1,0 +1,27 @@
+.cell {
+    padding: 12px 16px;
+}
+
+.flex-cell {
+    display: flex;
+}
+
+.open-orders, .open-order-row {
+    font-size: 0.95rem;
+    tr {
+        text-align: left;
+        height: 4.5rem;
+    }
+    
+    th {
+        font-weight: lighter;
+        color: var(--third-text-color)
+        
+    }
+
+    td {
+        font-weight: lighter;
+    }
+
+    
+}

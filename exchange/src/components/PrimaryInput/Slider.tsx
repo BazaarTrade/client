@@ -14,7 +14,7 @@ const Slider: React.FC<SliderProps> = ({value, setValue}) => {
       const sliderRect = sliderRef.current.getBoundingClientRect();
       let newValue =
         ((e.clientX - sliderRect.left) / sliderRect.width) * 100; // Calculate percentage
-      newValue = Math.min(100, Math.max(0, newValue)); // Keep value within bounds (0 to 100)
+      newValue = Math.min(100, Math.max(0, newValue)); // Keep value within bounds (0 to 100)ц
       setValue(newValue);
     }
   };
@@ -32,10 +32,10 @@ const Slider: React.FC<SliderProps> = ({value, setValue}) => {
       <div className="slider-track" ref={sliderRef} onMouseDown={handleMouseDown}>
         <div
           className="slider-thumb"
-          style={{ left: `calc(${value}% - 12px)` }} // 12px is half of the thumb width
+          style={{ left: `calc(${value}% - 8px)` }} 
         ></div>
 
-        {/* Dots at 0%, 25%, 50%, 75%, and 100% */}
+
         <div className="slider-dots">
           <div className="slider-dot" style={{ left: "0%" }}></div>
           <div className="slider-dot" style={{ left: "25%" }}></div>

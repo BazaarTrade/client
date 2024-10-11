@@ -16,6 +16,7 @@
 
         .logo {
             background-color: inherit;
+            cursor: pointer;
             
             h1 {
                 background-color: inherit;
@@ -35,6 +36,7 @@
 .tab {
     background-color: inherit;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .button-box {

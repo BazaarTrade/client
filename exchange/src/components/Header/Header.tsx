@@ -2,10 +2,12 @@ import { useThemeContext } from "../../state/themeContext";
 import "./header.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobe, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
     const {isDark, setIsDark} = useThemeContext();
+    const navigate = useNavigate();
   return (
     <header className='header'>
         <div className="logo-tabs">
@@ -13,9 +15,9 @@ const Header = () => {
                 <h1>BAZAAR</h1>
             </div>
             <div className="tabs">
-                <div className="tab">Spot</div>
+                <div className="tab" onClick={() => navigate("/")}>Spot</div>
                 <div className="tab">Futures</div>
-                <div className="tab">Order Book</div>
+                <div className="tab" onClick={() => navigate("/orderbook")}>Order Book</div>
             </div>
         </div>
         <div className="button-box">

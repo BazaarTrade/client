@@ -5,7 +5,7 @@ import Slider from '../PrimaryInput/Slider'
 const AmountInput = () => {
     const balance = 10000;
     const price = 0.07;
-    const [value, setValue] = useState<number>(50); // Initial value in percentage (0 to 100)
+    const [value, setValue] = useState<number>(0); // Initial value in percentage (0 to 100)
     const [amount, setAmount] = useState<number>();
     const [total, setTotal] = useState<number>();
 

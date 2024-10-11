@@ -32,8 +32,8 @@ body {
 }
 
 [color-theme="light"] {
-  --background-color: white;
-  --secondary-background-color: #F8F9FB;
+  --background-color: #eeeeee;
+  --secondary-background-color: white;
   --primary-text-color: black;
   --secondary-text-color: #8e949e;
   --third-text-color: #2e384d;
