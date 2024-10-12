@@ -1,0 +1,77 @@
+.ticker {
+    margin: 0px 16px;
+    height: 100%;
+    .ticker-wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items: center;
+    }
+}
+
+.symbol-name-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .symbol-name {
+        font-size: 20px;
+        margin: auto 0px;
+    }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--secondary-text-color);
+    align-items: center;
+}
+
+.symbol-name {
+    align-items: center;
+    color: var(--primary-text-color);
+}
+
+.price-wrapper, .data-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-wrapper{
+    justify-content: center;
+    .latest-price {
+        font-size: 20px;
+        color: var(--green);
+    }
+
+    .latest-fiat-price {
+        font-size: 12px;
+        font-weight: lighter;
+        display: flex;
+        justify-content: center;
+        color: var(--primary-text-color);
+    }
+}
+
+.rate-value {
+    font-size: 12px;
+    color: white;
+    background-color: var(--green);
+    padding: 4px 6px;
+    border-radius: 10%;
+}
+
+.data-item{ 
+    .data-name {
+        color: var(--secondary-text-color);
+        font-size: 12px;
+        font-weight: lighter;
+    }
+    .value {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--primary-text-color);
+    }
+}

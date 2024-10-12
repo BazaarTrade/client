@@ -21,6 +21,14 @@
 
     td {
         font-weight: lighter;
+        color: var(--primary-text-color);
+    }
+
+    td.red {
+        color: #f2495e;
+    }
+    td.green {
+        color: #30BF87;
     }
 
     

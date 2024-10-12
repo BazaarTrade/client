@@ -12,7 +12,7 @@ const OpenOrders = () => {
             <th className="cell">Pair</th>
             <th className="cell">Type</th>
             <th className="cell">Side</th>
-            <th className="cell">Price</th>
+            <th className="cell green">Price</th>
             <th className="cell">Filled Amount</th>
             <th className="cell">Order Value</th>
             <th className="cell">Operation</th>

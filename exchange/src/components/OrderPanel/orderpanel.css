@@ -13,7 +13,7 @@
     width: 100%;
     padding: 0;
     h2 {
-        padding: 6px 4px;       
+        padding: 10px 4px;       
         font-size: 16px;
         color: var(--primary-text-color);
     }
@@ -52,7 +52,7 @@
 }
 
 .est-fee {
-    padding: 20px 0px;
+    padding: 5px 0px 20px;
 }
 
 .buysell-spot-button {

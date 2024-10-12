@@ -15,6 +15,7 @@ const TradePage = () => {
             <div className="item name"><Ticker></Ticker></div>
             <div className="item chart"></div>
             {/* <div className="item chart"><img src='./src/assets/chart.jpg'/></div> */}
+            <div className="item chart"><img src='./src/assets/chart_light.jpg'/></div>
             <div className="item orderbook"><OrderBook limit={10} fullLimit={20}/></div>
             <div className="item order-panel"><OrderPanel/></div>
             <div className="item order-tabs"><Orders></Orders></div>

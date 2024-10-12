@@ -18,7 +18,7 @@
   .buy, .sell {
     width: 45%;
     font-size: 16px;
-    background-color: var(--disabled-button-color);
+    background-color: var(--third-background-color);
     color: var(--secondary-text-color);
   }
 

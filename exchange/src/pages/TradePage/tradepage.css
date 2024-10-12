@@ -3,7 +3,7 @@
     .trade-page-layout {
         display: grid;
         grid-template-columns: 3.6fr 1fr 1fr;
-        grid-template-rows: 64px 560px 50px 200px;
+        grid-template-rows: 64px 560px 50px 490px;
         grid-gap: 5px;
         grid-template-areas: 
         'name name name'
@@ -53,3 +53,5 @@
     font-weight: 700;
     color: rgb(255, 255, 255);
   }
+
+
