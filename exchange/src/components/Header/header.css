@@ -45,18 +45,5 @@
     gap: 25px;
 }
 
-.btn {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    width: 20px;
-}
 
-.primary-btn {
-    border: none;
-    outline: none;
-    padding: 8px 25px;
-    border-radius: 10px;
-    font-weight: bold;
-}
 

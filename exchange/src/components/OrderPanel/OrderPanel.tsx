@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./orderpanel.css";
 import Tabs from '../MultiTab/MultiTab';
 import BuySellButtons from '../BuySellButtons/BuySellButton';

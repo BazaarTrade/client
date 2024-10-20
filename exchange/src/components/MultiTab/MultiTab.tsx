@@ -20,12 +20,8 @@ const Tabs: React.FC<PropsWithChildren<TabsProps>> = ({ tabNames, children }) =>
     }
   }, [activeTab]);
 
-  // Convert children to an array
-  const childrenArray = React.Children.toArray(children);
 
-  // Logging for debugging
-  console.log('Active Tab:', activeTab);
-  console.log('Children Array:', childrenArray);
+  const childrenArray = React.Children.toArray(children);
 
   return (
     <div className="tabs-container">

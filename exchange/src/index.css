@@ -54,5 +54,36 @@ html::-webkit-scrollbar-thumb {
   height: 100px;
 }
 
+.btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 20px;
+}
+
+.primary-btn {
+  border: none;
+  outline: none;
+  padding: 8px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.secondary-button {
+  outline: none;
+  border: var(--primary-text-color) 2px solid;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 8px 25px;
+  color: var(--primary-text-color);
+  width: 90%;
+  font-weight: 600;
+}
+
+.secondary-button:hover {
+  color: var(--background-color);
+  background-color: var(--primary-text-color);
+}
+
 
 

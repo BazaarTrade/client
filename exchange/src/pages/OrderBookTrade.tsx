@@ -2,6 +2,7 @@ import OrderBook from '../components/OrderBook/OrderBook'
 import Trade from '../components/Trade/Trade'
 import "./orderbooktrade.css"
 import Header from '../components/Header/Header'
+import { OrderBookProvider } from '../contexts/OrderBookContext'
 
 
 const OrderBookTrade = () => {
@@ -13,7 +14,7 @@ const OrderBookTrade = () => {
 
       </div>
       <div className='main-section'>
-          <OrderBook limit={15} fullLimit={30}/>
+          <OrderBookProvider><OrderBook limit={15} fullLimit={30}/></OrderBookProvider>
           <Trade/>
       </div>
     </div>
