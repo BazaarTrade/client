@@ -20,8 +20,12 @@
             grid-area: chart;
         }
 
-        .orderbook{
+        .orderbook-area{
             grid-area: orderbook;
+            display: flex;
+            flex-direction: column;
+            padding: 1px 10px;
+            
         }
 
         .order-panel{
@@ -53,5 +57,9 @@
     font-weight: 700;
     color: rgb(255, 255, 255);
   }
+
+.orderbook-trade-panel-tabs {
+    
+}
 
 

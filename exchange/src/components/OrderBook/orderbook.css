@@ -2,12 +2,6 @@
     background-color: var(--secondary-background-color);
     display: flex;
     height: 100%;
-    h2 {
-        padding: 10px 16px; 
-        padding-bottom: 3px;      
-        font-size: 16px;
-        color: var(--primary-text-color);
-    }
 
     .button-dropdown-box {
         display: flex;
@@ -100,18 +94,30 @@
     .order-list {
         padding-top: 1.5rem; 
         width: 100%; 
-        height: 100%;
-
-        /* .orderbook-wrapper {
+        height: 450px;
+        
+        .orderbook-wrapper {
             display: flex;
             flex-direction: column;
             height: 100%;
-            margin-top: auto;
-            justify-content: center;
-        } */
+        }
     }
-    
-    
-    
 }  
+
+.display-both-asks {
+    align-content: flex-end;
+}
+
+.display-both-bids {
+    align-content: flex-start;
+   
+}
+
+.display-full-asks {
+    height: auto;
+}
+
+.display-full-bids {
+    height: auto;
+}
 

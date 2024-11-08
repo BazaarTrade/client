@@ -4,15 +4,10 @@ import {
     useContext,
     useState,
   } from "react";
-import { useWebSocketContext } from "./wscontext";
 
-  
   type OrderPanelContextType = {
     isBuy: boolean
     setIsBuy: Function;
-    // setAmount: Function;
-    // setPrice: Function;
-    // setTotal: Function;
     placeOrder: Function;
   };
   
@@ -31,7 +26,7 @@ import { useWebSocketContext } from "./wscontext";
         const order = {
                   userID: userID,
                   isBid: isBuy,
-                  symbol: symbol,
+                  pair: symbol,
                   qty: amount.toString(),
                   price: price.toString(),
                   type: type

@@ -1,10 +1,5 @@
 .trade {    
     background-color: var(--secondary-background-color);
-    h2 {
-        padding: 10px 16px;     
-        font-size: 16px;
-        color: var(--primary-text-color);
-    }
 
     .namings{
         display: flex;

@@ -3,9 +3,10 @@ import "./multitabs.css";
 
 interface TabsProps {
   tabNames: string[];
+  className?: string;
 }
 
-const Tabs: React.FC<PropsWithChildren<TabsProps>> = ({ tabNames, children }) => {
+const Tabs: React.FC<PropsWithChildren<TabsProps>> = ({ tabNames, children, className }) => {
   const [activeTab, setActiveTab] = useState(0);
   const underlineRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<Array<HTMLDivElement | null>>([]);
@@ -24,14 +25,14 @@ const Tabs: React.FC<PropsWithChildren<TabsProps>> = ({ tabNames, children }) =>
   const childrenArray = React.Children.toArray(children);
 
   return (
-    <div className="tabs-container">
+    <div className={`tabs-container ${className ? className : ''}`}>
       <div className="tabs">
         {tabNames.map((tab, index) => (
           <div
             key={index}
             ref={(el) => (tabsRef.current[index] = el)}
             className={`tab ${activeTab === index ? "active" : ""}`}
-            onClick={() => setActiveTab(index)} // Set the active tab
+            onClick={() => setActiveTab(index)} 
           >
             {tab}
           </div>
@@ -39,7 +40,7 @@ const Tabs: React.FC<PropsWithChildren<TabsProps>> = ({ tabNames, children }) =>
         <div className="underline" ref={underlineRef}></div>
       </div>
       <div className="tab-content">
-        {childrenArray[activeTab]} {/* Render only the content for the active tab */}
+        {childrenArray[activeTab]} 
       </div>
     </div>
   );

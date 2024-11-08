@@ -5,7 +5,7 @@ import TrendBar from "../TrendBar/TrendBar";
 import ThreeColumnTable from "../ThreeColumnTable/ThreeColumnTable";
 import Thead from "../ThreeColumnTable/Thead";
 import Price from "./Price";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OrderBookProvider, useOrderBookContext } from "../../contexts/OrderBookContext";
 
 interface OrderBookProps {
@@ -16,11 +16,19 @@ interface OrderBookProps {
 const OrderBook: React.FC<OrderBookProps> = ({ limit, fullLimit }) => {
   const [activeTab, setActiveTab] = useState<"both" | "bids" | "asks">("both");
   const {asksRows, bidsRows} = useOrderBookContext();
+  const [listHeight, setListHeight] = useState<string>("200px");
+  const [orderListHeight, setOrderListHeight] = useState<string>("450px");
+
+  useEffect(() => {
+    if (fullLimit == 30) {
+      setListHeight("300px");
+      setOrderListHeight("700px");
+    }
+  }, [])
 
   return (
     <div className="book-trade-container orderbook">
-      <h2>Order Book</h2>
-      <div className="container">
+      <div className="">
         <div className="button-dropdown-box">
           <div className="button-box">
             <div
@@ -56,27 +64,54 @@ const OrderBook: React.FC<OrderBookProps> = ({ limit, fullLimit }) => {
         </div>
         <TrendBar />
         <OrderBookProvider>
-        <div className="order-list">
+        <div className="order-list" style={{height: orderListHeight}}>
           <Thead tableType="order"></Thead>
           <div className="orderbook-wrapper">
-            <div className={activeTab === "bids" ? "hidden" : ""}>
-              <ThreeColumnTable
-                symbol={"BTC_USDT"}
-                limit={activeTab === "asks" ? fullLimit : limit}
-              >
-                {asksRows}
-              </ThreeColumnTable>
-            </div>
-            <Price></Price>
-            <div className={activeTab === "asks" ? "hidden" : ""}>
-              <ThreeColumnTable
-                symbol={"BTC_USDT"}
-                limit={activeTab === "bids" ? fullLimit : limit}
-              >
-                {bidsRows}
-              </ThreeColumnTable>
-            </div>
-          </div>
+  {(() => {
+    let asksClass = "";
+    let bidsClass = "";
+    let height = "";
+    
+    switch (activeTab) {
+      case "bids":
+        asksClass = "hidden";
+        bidsClass = "display-full-bids";
+        height = "auto";
+        break;
+      case "asks":
+        asksClass = "display-full-asks"; 
+        bidsClass = "hidden";
+        height = "auto";
+        break;
+      default:
+        asksClass = "display-both-asks";
+        bidsClass = "display-both-bids";
+        height = listHeight;
+    }
+    return (
+      <>
+        <div className={asksClass} style={{height: height}}>
+          <ThreeColumnTable
+            symbol={"BTC_USDT"}
+            limit={activeTab === "asks" ? fullLimit : limit}
+          >
+            {asksRows}
+          </ThreeColumnTable>
+        </div>
+        <Price />
+        <div className={bidsClass} style={{height: height}}>
+          <ThreeColumnTable
+            symbol={"BTC_USDT"}
+            limit={activeTab === "bids" ? fullLimit : limit}
+          >
+            {bidsRows}
+          </ThreeColumnTable>
+        </div>
+      </>
+    );
+  })()}
+</div>
+
         </div>
         </OrderBookProvider>
       </div>

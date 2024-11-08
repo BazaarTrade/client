@@ -31,11 +31,10 @@
         display: flex;
         justify-content: space-between; 
         width: 100%; 
-        top: 7px; /* Position it right below the bars */
+        top: 7px;
         left: 0;
         background-color: inherit;
-        font-size: small;
-    
+        font-size: small;   
         .buy {
             display: flex;
             align-items: center; 

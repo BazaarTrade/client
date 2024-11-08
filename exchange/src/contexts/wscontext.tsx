@@ -12,8 +12,24 @@ import {
     connectionStatus: number | undefined;
     sendMessage: (message: object) => void;
     orderBook: OrderBook | undefined;
+    trades: Trades | undefined
   };
 
+  type Trade = {
+    isBid: boolean;
+    price: string;
+    qty: string;
+    time: string;
+  };
+  
+  type Trades = {
+    topic: string;
+    params: {
+      symbol: string;
+      trades: Trade[]; 
+    };
+  };
+  
   type OrderBook = {
     topic: string;
     params: {
@@ -39,6 +55,7 @@ import {
     const ws = useRef<WebSocket | null>(null);
     const [connectionStatus, setConnectionStatus] = useState<number | undefined>(undefined);
     const [orderBook, setOrderBook] = useState<OrderBook>();
+    const [trades, setTrades] = useState<Trades>();
   
     useEffect(() => {
         const userID = localStorage.getItem("userID");
@@ -70,10 +87,13 @@ import {
           if (message.topic === "orderBook" && message.params) {
             setOrderBook(message);
           }
+
+          if (message.topic === "trades" && message.params) {
+            setTrades(message);
+          }
           console.log('Message from WebSocket:', message);
         }
     
-  
       ws.current.onopen = handleOpen;
       ws.current.onerror = handleError;
       ws.current.onclose = handleClose;
@@ -99,10 +119,6 @@ import {
       };
     }, []);
 
-    useEffect(() => {
-        console.log('message is for orderbook', orderBook);
-    }, [orderBook])
-
     const sendMessage = (message: object) => {
         if (ws.current && ws.current.readyState === WebSocket.OPEN) {
           ws.current.send(JSON.stringify(message));
@@ -113,7 +129,7 @@ import {
       };
   
     return (
-      <WebSocketContext.Provider value={{ ws: ws.current, sendMessage, connectionStatus, orderBook }}>
+      <WebSocketContext.Provider value={{ ws: ws.current, sendMessage, connectionStatus, orderBook, trades }}>
         {children}
       </WebSocketContext.Provider>
     );

@@ -1,0 +1,54 @@
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+  matchingengine:
+    image: tohamim/matchingengine:latest
+    ports:
+      - "50051:50051"
+    networks:
+      - my-network
+    depends_on:
+      postgres:
+        condition: service_started
+    environment:
+      DB_CONNECTION_URL: postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+      DB_CONNECTION: "user=postgres password=postgres dbname=postgres sslmode=disable host=postgres port=5432"
+      MIGRATIONS: "file://migrations"
+
+  quote:
+    image: tohamim/quote:latest
+    ports:
+      - "50052:50052"
+    networks:
+      - my-network
+    depends_on:
+      matchingengine:
+        condition: service_started
+    environment:
+      CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+
+  apigateway:
+    image: tohamim/apigateway:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - my-network
+    depends_on:
+      quote:
+        condition: service_started
+    environment:
+      CONN_ADDR_QUOTE: "quote:50052"
+      CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+
+networks:
+  my-network:
+    driver: bridge

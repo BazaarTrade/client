@@ -1,56 +1,40 @@
-import "./trade.css"
-import ThreeColumnTable from "../ThreeColumnTable/ThreeColumnTable"
-import TradeRow from "../ThreeColumnTable/TradeRow"
-import Thead from "../ThreeColumnTable/Thead"
+import "./trade.css";
+import ThreeColumnTable from "../ThreeColumnTable/ThreeColumnTable";
+import TradeRow from "../ThreeColumnTable/TradeRow";
+import Thead from "../ThreeColumnTable/Thead";
+import { useTradeContext } from "../../contexts/TradeContext";
 
-const Trade = () => {
+interface TradeProps {
+  limit: number;
+}
+
+const Trade: React.FC<TradeProps> = ({limit}) => {
+  const { tradeList } = useTradeContext();
+
   return (
     <div className='book-trade-container trade'>
-      <h2>Trade</h2>  
-      <div className="container">
+      <div className="">
         <div className="list">
           <Thead tableType="trade"></Thead>
-          <ThreeColumnTable symbol={"BTC_USDT"}>
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {false} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
-            <TradeRow isBid = {true} />
+          <ThreeColumnTable symbol={"BTC_USDT"} limit={limit}>
+            {tradeList ? (
+              tradeList.map((trade, index) => (
+                <TradeRow 
+                  key={index} 
+                  isBid={trade.isBid} 
+                  price={trade.price} 
+                  time={trade.time} 
+                  qty={trade.qty} 
+                />
+              ))
+            ) : (
+              ""
+            )}
           </ThreeColumnTable>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Trade
+export default Trade;

@@ -21,36 +21,26 @@ const AmountInput : React.FC<AmountInputProps> = ({value, setValue, amount, setA
     };
   
     useEffect(() => {
-      console.log("value:", value);
-      console.log("value UseEffect Triggered")
       const calculatedAmount = roundToPrecision((balance * value) / 100);
-      console.log("Calculated amount: ",calculatedAmount);
-      console.log(amount);
   
       if (amount != calculatedAmount) {
         setAmount(calculatedAmount);
-        console.log("setAmount in value useEffect triggered");
       }
       
     }, [value, price]);
   
     useEffect(() => {
       if (amount !== undefined) {
-        console.log("amount UseEffect Triggered")
         const calculatedTotal = roundToPrecision(amount * price);
         
         const calculatedValue = Math.min(
           100,
           Math.max(0, (amount / balance) * 100)
         );
-        console.log("calculated total: ",calculatedTotal);
-        console.log(total);
         if (total != calculatedTotal) {
           setTotal(calculatedTotal);
-          console.log("setTotal triggered in amount")
         }
         else {
-          console.log("setTotal NOT triggered in amount UseEffect")
         }
         setValue(calculatedValue)
         
@@ -59,19 +49,13 @@ const AmountInput : React.FC<AmountInputProps> = ({value, setValue, amount, setA
 
     useEffect(() => {
       if (total !== undefined) {
-        console.log("total UseEffect Triggered")
-        console.log("total: ",total)
-        console.log("price: ",price)
         const calculatedAmount = roundToPrecision(total / price);
 
-        console.log(amount, calculatedAmount)
 
         if (amount != calculatedAmount) {
           setAmount(calculatedAmount)
-          console.log("setAmount in total UseEffect Triggered")
         }
         else {
-          console.log("setAmount not triggered in total UseEffect")
         }
       }
     }, [total])

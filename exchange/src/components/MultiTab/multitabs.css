@@ -10,9 +10,8 @@
     }
     
     .tab {
-
       text-align: center;
-      padding: 10px 12px;
+      padding: 10px 0px;
       cursor: pointer;
       position: relative;
       font-weight: normal;
@@ -32,6 +31,8 @@
       transition: left 0.1s ease, width 0.1s ease;
     }
   }
+
+  
   
   
   

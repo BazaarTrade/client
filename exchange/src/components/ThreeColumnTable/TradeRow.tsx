@@ -1,19 +1,19 @@
 import "./threecolumntable.css"
+import { parseISO, format } from 'date-fns';
 
-interface TradeRowProps {
+interface TradeRow {
     isBid: boolean;
+    price: string;
+    qty: string;
+    time: string;
 }
 
-type TradeRow = {
-    traderow: TradeRowProps
-}
-
-const TradeRow: React.FC<TradeRowProps> = (traderow) => {
+const TradeRow: React.FC<TradeRow> = ({isBid, price, time, qty}) => {
   return (
     <tr className="traderow">
-        <td className="first-column">19:12:34</td>
-        <td className={traderow.isBid === true ? "second-column green" : "second-column red"}>59,200.2</td>
-        <td className="third-column">23</td>
+        <td className="first-column">{format(parseISO(time), 'HH:mm:ss')}</td>
+        <td className={isBid ? "second-column green" : "second-column red"}>{price}</td>
+        <td className="third-column">{qty}</td>
     </tr>
   )
 }
