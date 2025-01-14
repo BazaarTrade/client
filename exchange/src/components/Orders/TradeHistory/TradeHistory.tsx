@@ -1,16 +1,13 @@
 import "../orders.css";
-import OpenOrderRow from "./OpenOrderRow";
+import OpenOrderRow from "../OpenOrders/OpenOrderRow";
 import { useOrderContext } from "../../../contexts/OrdersContext";
 
-const OpenOrders = () => {
-  const { openOrders } = useOrderContext();
-  
-
-  // useEffect(() => {}, [updatedOrder])
+const ClosedOrders = () => {
+  const { closedOrders } = useOrderContext();
   
   return (
     <div className="open-orders orders">
-      {openOrders && openOrders.length > 0 ? (
+      {closedOrders && closedOrders.length > 0 ? (
         <table>
           <thead>
             <tr>
@@ -25,7 +22,7 @@ const OpenOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {openOrders.map((order) => (
+            {closedOrders.map((order) => (
               <OpenOrderRow key={order.orderID} {...order} />
             ))}
           </tbody>
@@ -37,4 +34,4 @@ const OpenOrders = () => {
   );
 };
 
-export default OpenOrders;
+export default ClosedOrders;

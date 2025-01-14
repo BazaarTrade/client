@@ -22,16 +22,13 @@ export const TradeProvider = ({ children }: ContextType) => {
   const [tradeList, setTradeList] = useState<TradeRow[]>([]);
 
 useEffect(() => {
-  console.log("Trade trigger");
+
   if (trades && trades.params && trades.params.trades) {
     const tradeArray = trades.params.trades;
     setTradeList((prevTradeList) => [...tradeArray, ...prevTradeList]);
   }
 }, [trades]);
 
-useEffect(() => {
-  console.log("TradeList changed", tradeList);
-}, [tradeList])
 
   return (
     <TradeContext.Provider value={{ tradeList }}>

@@ -8,7 +8,6 @@ import {
 } from "react";
 import { useWebSocketContext } from "./wscontext";
 import OrderRow from "../components/ThreeColumnTable/OrderRow";
-import EmptyRow from "../components/ThreeColumnTable/EmptyRow";
 
 type OrderBookContextType = {
   runningAsksTotal: number;
@@ -24,7 +23,6 @@ type ContextType = PropsWithChildren<{}>;
 
 export const OrderBookProvider = ({ children }: ContextType) => {
   const { orderBook } = useWebSocketContext();
-  const emptyRows = Array.from({ length: 30 }, () => <EmptyRow />);
   const [runningAsksTotal, setRunningAsksTotal] = useState(0);
   const [runningBidsTotal, setRunningBidsTotal] = useState(0);
   const [bidsRows, setBidRows] = useState<JSX.Element[]>([]);

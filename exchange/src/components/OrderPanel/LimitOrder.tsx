@@ -8,7 +8,7 @@ const LimitOrder = () => {
   const [value, setValue] = useState<number>(0);
   const [amount, setAmount] = useState<number>();
   const [total, setTotal] = useState<number>();
-  const [price, setPrice] = useState<number>(0.07);
+  const [price, setPrice] = useState<number>(100);
   const { placeOrder, isBuy } = useOrderPanelContext();
   return (
     <div>

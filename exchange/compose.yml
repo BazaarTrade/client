@@ -11,6 +11,9 @@ services:
       - my-network
 
   matchingengine:
+    build:
+      context: ./matchingEngine
+      dockerfile: Dockerfile
     image: tohamim/matchingengine:latest
     ports:
       - "50051:50051"
@@ -25,6 +28,9 @@ services:
       MIGRATIONS: "file://migrations"
 
   quote:
+    build:
+      context: ./quote
+      dockerfile: Dockerfile
     image: tohamim/quote:latest
     ports:
       - "50052:50052"
@@ -37,6 +43,9 @@ services:
       CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
 
   apigateway:
+    build:
+      context: ./apiGateway
+      dockerfile: Dockerfile
     image: tohamim/apigateway:latest
     ports:
       - "8080:8080"
@@ -48,6 +57,22 @@ services:
     environment:
       CONN_ADDR_QUOTE: "quote:50052"
       CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+
+  clientSimulator:
+    build:
+      context: ./clientSimulator
+      dockerfile: Dockerfile
+    image: tohamim/clientsimulator:latest
+    ports:
+      - "9090:9090"
+    networks:
+      - my-network
+    depends_on:
+      apigateway:
+        condition: service_started
+    environment:
+      CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+      GATEWAY_API_ORDER_REQ_URL: "http://apigateway:8080/order"
 
 networks:
   my-network:
