@@ -1,8 +1,11 @@
 import React from "react";
 import Price from "../OrderBook/Price";
 import "./ticker.css"
+import { useTradeContext } from "../../contexts/TradeContext";
+import { formatPrice } from "../../utilfunctions";
 
 const Ticker = () => {
+  const { lastPrice } = useTradeContext();
   return (
     <div className="ticker">
       <div className="ticker-wrapper">
@@ -11,7 +14,7 @@ const Ticker = () => {
           <span className="symbol-name">BTC/USDT</span>
         </div>
         <div className="price-wrapper">
-          <span className="latest-price">59,400.34</span>
+          <span className="latest-price">{formatPrice(lastPrice)}</span>
           <span className="latest-fiat-price">59,400.34$</span>
         </div>
         <span className="rate-value">+4.22%</span>

@@ -8,6 +8,7 @@ import {
 } from "react";
 import { useWebSocketContext } from "./wscontext";
 import OrderRow from "../components/ThreeColumnTable/OrderRow";
+import { formatTotal } from "../utilfunctions";
 
 type OrderBookContextType = {
   runningAsksTotal: number;
@@ -48,7 +49,7 @@ export const OrderBookProvider = ({ children }: ContextType) => {
               isBid={isBid}
               price={price}
               volume={volume}
-              total={total}
+              total={formatTotal(total)}
               runningTotal={runningTotal}
             />
           );

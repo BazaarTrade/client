@@ -15,10 +15,13 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
     orderBook: OrderBook | undefined;
     trades: Trades | undefined;
     updatedTrade: OrderRowType | undefined;
+    chart: candleStick | undefined;
+
   };
 
   type Trade = {
     isBid: boolean;
+    pair: string;
     price: string;
     qty: string;
     time: string;
@@ -26,16 +29,13 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
   
   type Trades = {
     topic: string;
-    params: {
-      symbol: string;
-      trades: Trade[]; 
-    };
+    params: Trade[];
   };
   
   type OrderBook = {
     topic: string;
     params: {
-      symbol: string;
+      pair: string;
       bids: {
         price: string;
         qty: string;
@@ -46,6 +46,22 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
       }[] | null; 
       bidsQty: string;
       asksQty: string;
+    };
+  };
+
+  type candleStick = {
+    topic: string;
+    params: {
+      pair: string;
+      timeframe: string;
+      openTime: string;
+      closeTime: string;
+      openPrice: string;
+      closePrice: string;
+      highPrice: string;
+      lowPrice: string;
+      volume: string;
+      isClosed: boolean;
     };
   };
   
@@ -59,6 +75,7 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
     const [orderBook, setOrderBook] = useState<OrderBook>();
     const [trades, setTrades] = useState<Trades>();
     const [updatedTrade, setUpdatedTrade] = useState<OrderRowType>();
+    const [chart, setChart] = useState<candleStick>();
   
     useEffect(() => {
         const userID = localStorage.getItem("userID");
@@ -98,7 +115,10 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
           if (message.topic === "orderUpdate") {
             setUpdatedTrade(message.order); }
           
-          console.log('Message from WebSocket:', message);
+          if (message.topic === "candleStick") {
+            setChart(message);
+          }
+          // console.log('Message from WebSocket:', message);
         }
     
       ws.current.onopen = handleOpen;
@@ -136,7 +156,7 @@ import { OrderRowType } from "../components/Orders/OpenOrders/OpenOrderRow";
       };
   
     return (
-      <WebSocketContext.Provider value={{ ws: ws.current, sendMessage, connectionStatus, orderBook, trades, updatedTrade }}>
+      <WebSocketContext.Provider value={{ ws: ws.current, sendMessage, connectionStatus, orderBook, trades, updatedTrade, chart }}>
         {children}
       </WebSocketContext.Provider>
     );

@@ -36,7 +36,7 @@
         position:absolute;
         top: 110%;
         right: 1%;
-        background-color: rgb(28, 28, 28);
+        background-color: var(--background-color);
         padding: 5px;
         border-radius: 5px;
         z-index: 3;
@@ -45,11 +45,14 @@
 
 .dropdown-item {
     padding: 5px;
+    padding-right: 7px;
     text-align: left;
-    background-color: rgb(28, 28, 28);
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    font-weight: lighter;
 }
 
 .dropdown-item:hover {
-    background-color: #696969;
+    background-color: var(--secondary-background-color);
     border-radius: 5px;
 }

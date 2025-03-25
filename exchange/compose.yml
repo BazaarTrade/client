@@ -41,6 +41,8 @@ services:
         condition: service_started
     environment:
       CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+      DB_CONNECTION: "user=postgres password=postgres dbname=postgres sslmode=disable host=postgres port=5432"
+      MIGRATIONS: "file://migrations"
 
   apigateway:
     build:
@@ -57,6 +59,7 @@ services:
     environment:
       CONN_ADDR_QUOTE: "quote:50052"
       CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
+      DB_CONNECTION: "user=postgres password=postgres dbname=postgres sslmode=disable host=postgres port=5432"
 
   clientSimulator:
     build:
@@ -71,8 +74,8 @@ services:
       apigateway:
         condition: service_started
     environment:
-      CONN_ADDR_MATCHING_ENGINE: "matchingengine:50051"
       GATEWAY_API_ORDER_REQ_URL: "http://apigateway:8080/order"
+      GATEWAY_API_WS_URL: "ws://apigateway:8080/ws/100"
 
 networks:
   my-network:

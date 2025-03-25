@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./threecolumntable.css";
 import { useOrderBookContext } from "../../contexts/OrderBookContext";
+import { formatTotal } from "../../utilfunctions";
 
 interface OrderRowProps {
   isBid: boolean;
   price: number;
   volume: number;
-  total: number;
+  total: string;
   runningTotal: number;
 }
 
@@ -31,9 +32,9 @@ const OrderRow: React.FC<OrderRowProps> = ({ isBid, price, volume, total, runnin
         } as React.CSSProperties
       }
     >
-      <td className={isBid ? "first-column green" : "first-column red"}>{price.toFixed(1)}</td>
+      <td className={isBid ? "first-column green" : "first-column red"}>{price}</td>
       <td className="second-column">{volume.toFixed(5)}</td>
-      <td className="third-column">{total}</td>
+      <td className="third-column">{formatTotal(runningTotal)}</td>
     </tr>
   );
 };

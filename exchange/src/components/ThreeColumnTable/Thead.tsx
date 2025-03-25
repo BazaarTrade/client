@@ -12,9 +12,9 @@ const Thead: React.FC<TableHeadProps> = ({ tableType }) => {
         <thead>
         {tableType === "trade" ? (
           <tr className="table-headings">
-            <th className="first-column">Time</th>
-            <th className="second-column">Fill Price ()</th>
-            <th className="third-column">Total ()</th>
+            <th className="first-column">Fill price ()</th>
+            <th className="second-column">Total ()</th>
+            <th className="third-column">Time ()</th>
           </tr>
         ) : (
           <tr className="table-headings">

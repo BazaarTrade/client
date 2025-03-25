@@ -5,8 +5,9 @@ import TrendBar from "../TrendBar/TrendBar";
 import ThreeColumnTable from "../ThreeColumnTable/ThreeColumnTable";
 import Thead from "../ThreeColumnTable/Thead";
 import Price from "./Price";
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { OrderBookProvider, useOrderBookContext } from "../../contexts/OrderBookContext";
+import { usePrecisionContext } from "../../contexts/PrecisionContext";
 
 interface OrderBookProps {
   limit: number;
@@ -18,12 +19,19 @@ const OrderBook: React.FC<OrderBookProps> = ({ limit, fullLimit }) => {
   const {asksRows, bidsRows} = useOrderBookContext();
   const [listHeight, setListHeight] = useState<string>("200px");
   const [orderListHeight, setOrderListHeight] = useState<string>("450px");
+  const {precision, getPrecisions, transformPrecision, setCurrentPrecision, currentPrecision} = usePrecisionContext();
 
   useEffect(() => {
     if (fullLimit == 30) {
       setListHeight("300px");
       setOrderListHeight("700px");
     }
+
+    getPrecisions();
+    console.log(precision); 
+    console.log(typeof precision); 
+         
+
   }, [])
 
   return (
@@ -57,9 +65,9 @@ const OrderBook: React.FC<OrderBookProps> = ({ limit, fullLimit }) => {
             </div>
           </div>
           <DropDown>
-            <DropDownItem>0.00001</DropDownItem>
-            <DropDownItem>0.00000001</DropDownItem>
-            <DropDownItem>0.00000000001</DropDownItem>
+            {precision ? (precision.map((item: number, index: number) => (
+              <DropDownItem key={index} value={transformPrecision(item)} index={item}></DropDownItem>
+            ))) : null}
           </DropDown>
         </div>
         <TrendBar />

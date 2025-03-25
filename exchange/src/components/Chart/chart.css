@@ -1,0 +1,38 @@
+.chart-layout {
+    background-color: var(--background-color);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50px 1fr 80px;
+    grid-template-rows: 30px 30px 1fr 30px;
+    grid-gap: 5px;
+    grid-template-areas: 
+        'name-area name-area name-area'
+        'tf-area tf-area tf-area'
+        'tools-area chart-area price-axis-area'
+        'tools-area time-axis-area price-axis-area';
+
+    .name-area {
+        grid-area: name-area;
+    }
+    .tf-area {
+        grid-area: tf-area;
+    }
+    .chart-area {
+        grid-area: chart-area;
+    }
+    .price-axis-area {
+        grid-area: price-axis-area;
+    }
+    .time-axis-area {
+        grid-area: time-axis-area;
+    }
+    .tools-area {
+        grid-area: tools-area;
+    }
+    .item{
+        border: 1px solid red;
+    }
+}
+
+
