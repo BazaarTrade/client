@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { useChartContext } from '../../contexts/ChartContext';
 import { formatDate } from 'date-fns';
+import { ca } from 'date-fns/locale';
 
 interface Props {
   offsetX: number;
@@ -19,6 +20,33 @@ export interface CandleStick {
   volume: string;
   isClosed: boolean;
 }
+
+const CandleSticks = [
+  {
+    pair: "BTCUSDT",
+    timeframe: "1m",
+    openTime: "2023-10-01T00:00:00Z",
+    closeTime: "2023-10-01T00:01:00Z",
+    openPrice: "10000",
+    closePrice: "10500",
+    highPrice: "10200",
+    lowPrice: "9900",
+    volume: "1.5",
+    isClosed: true,
+  },
+  {
+    pair: "BTCUSDT",
+    timeframe: "1m",
+    openTime: "2023-10-01T00:01:00Z",
+    closeTime: "2023-10-01T00:02:00Z",
+    openPrice: "10100",
+    closePrice: "10250",
+    highPrice: "10300",
+    lowPrice: "10050",
+    volume: "2.0",
+    isClosed: true,
+  },
+];
 
 const CandleChart: React.FC<Props> = ({offsetX, offsetY}) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -40,8 +68,6 @@ const CandleChart: React.FC<Props> = ({offsetX, offsetY}) => {
     }, []);
 
     useEffect(() => {
-
-      console.log(lastCandleStick);
       if (candleStickList.length === 0) return;
   
       const canvas = canvasRef.current;
@@ -71,6 +97,7 @@ const CandleChart: React.FC<Props> = ({offsetX, offsetY}) => {
       drawAllCandles();
       if (lastCandleStick) {
         drawCandle(lastCandleStick)}
+
     }, [offsetX, offsetY]);
   
     const drawAllCandles = () => {
@@ -132,8 +159,8 @@ const CandleChart: React.FC<Props> = ({offsetX, offsetY}) => {
       const openTime = formatDate(new Date(candle.openTime), "mm");
   
       const candleSpacingX = 20;
-      const candleWidth = candleSpacingX - 2;
-      const scaleX = (time: number) => time * 25;
+      const candleWidth = candleSpacingX;
+      const scaleX = (time: number) => (time * 25) - 10;
       const scaleY = (price: any) => price / priceperpixel;
   
       return {

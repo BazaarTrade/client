@@ -44,6 +44,10 @@ const InfiniteCanvas: React.FC = () => {
   }, [state.offsetY, scale]);
 
   useEffect(() => {
+    draw();
+  }, [scale]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || !canvas.parentElement) return;
     const ctx = canvas.getContext("2d");
@@ -103,7 +107,6 @@ const InfiniteCanvas: React.FC = () => {
     ctx.stroke();
   };
 
-  // Panning (Drag to move)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -146,16 +149,14 @@ const InfiniteCanvas: React.FC = () => {
     };
   }, [draw]);
 
-  // Zooming 
   useEffect(() => {
     const canvas = canvasRef.current;
     const handleWheel = (e: WheelEvent) => {
         e.preventDefault();
       setScale((prevScale) => {
         const newScale = e.deltaY > 0 ? prevScale * 1.1 : prevScale * 0.9;
-        return Math.max(0.1, Math.min(newScale, 10)); 
+        return newScale;
       });
-      draw(); 
     };
 
     if (canvas) {
@@ -167,7 +168,7 @@ const InfiniteCanvas: React.FC = () => {
         canvas.removeEventListener("wheel", handleWheel);
       }
     };
-  }, [draw]);
+  }, []);
 
 
 
